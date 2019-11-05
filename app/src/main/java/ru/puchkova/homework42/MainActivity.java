@@ -14,7 +14,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner country, city, house;
+    private Spinner country;
+    private Spinner city;
+    private Spinner house;
     private Button ok;
 
     @Override
@@ -26,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews(){
-        country = (Spinner) findViewById(R.id.country);
-        city = (Spinner) findViewById(R.id.city);
-        house = (Spinner) findViewById(R.id.house);
-        ok = (Button) findViewById(R.id.ok);
+        country = findViewById(R.id.country);
+        city = findViewById(R.id.city);
+        house = findViewById(R.id.house);
+        ok = findViewById(R.id.ok);
 
         initSpinnerCountries();
         initSpinnerHouses();
@@ -56,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         country.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 String[] countries = getResources().getStringArray(R.array.countries);
-                initSpinnerCities(countries[i]);
+                initSpinnerCities(countries[position]);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
